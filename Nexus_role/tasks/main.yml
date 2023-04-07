@@ -1,0 +1,90 @@
+
+    - name: update yum packages
+      yum:
+        update_cache: yes
+
+    - name: yum install openjdk
+      yum:
+        name: java-1.8.0-openjdk.x86_64
+        state: present
+
+    - name: yum install chkconfig 
+      yum:
+        name: chkconfig.x86_64
+        state: present
+
+    - name: add user "nexus"
+      user:
+        name: nexus
+
+    - name: create directory for nexus and chowner to nexus user
+      file:
+        path: "{{nexus_dir_path1}}"
+        state: directory
+        recurse: yes
+        owner: nexus
+        group: nexus
+
+    - name: Download nexus package
+      ansible.builtin.get_url:
+        url: https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+        dest: "{{nexus_dir_path1}}"
+
+    - name: unarchive package
+      shell: " cd {{nexus_dir_path1}}; tar xvfz nexus-3.* ; rm -r *tar.gz"
+   
+    - name: "rename unarchived directory "
+      shell: " cd {{nexus_dir_path1}} ; mv nexus-3.* nexus "
+  
+    - name: chowner to nexus user
+      file:
+        path: "{{ item }}"
+        state: directory
+        recurse: yes
+        owner: nexus
+        group: nexus
+      with_items:
+        -{{nexus_dir_path1}}
+        -{{nexus_dir_path2}} 
+        -{{nexus_dir_path3}} 
+
+    - name: Replacing hashtagged line in nexus.rc file
+      lineinfile:
+        path: /app/nexus/bin/nexus.rc
+        regexp: 'run_as_user'
+        line: run_as_user="nexus"
+
+    - name: Copy file from local host to remote host
+      copy:
+        src: /home/omar/Myproject/Nexus_role/files/nexus.service
+        dest: /etc/systemd/system
+        owner: nexus
+        group: nexus
+
+    - name: Changing SELinux context to (bin_t)
+      shell: "chcon -R -t bin_t /app/nexus/bin/nexus "
+      become: yes
+
+    - name: permit traffic in default zone on port 8081/tcp
+      firewalld:
+        port: 8081/tcp
+        permanent: true
+        state: enabled
+
+    - name: "chkconfig "
+      shell: " chkconfig nexus on "
+      become: yes
+      
+    - name: Start the Nexus service
+      systemd:
+        state: started
+        name: nexus
+
+    - name:
+      command: "curl -i http://192.168.1.200:8081 "
+      register: results
+      
+    - name: Check if Nexus working successfully
+      debug:
+        var: results.stdout_lines[-0] 
+    
