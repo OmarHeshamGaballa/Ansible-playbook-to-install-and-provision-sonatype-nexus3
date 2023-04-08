@@ -1,23 +1,22 @@
 # Installing_Nexus3_using_Ansible
 
-##Ansible
+## Ansible
 
+Ansible is an open-source, cross-platform tool for resource provisioning automation that DevOps professionals popularly use for continuous delivery of software code by taking advantage of an “infrastructure as code” approach
 
-Ansible is an open-source, cross-platform tool for resource provisioning automation that DevOps professionals
-
-##Nexus 
+## Nexus 
 
 ![1_2b4k1_SmKkNRgqZV-NMFQg](https://user-images.githubusercontent.com/122731503/230691133-883885a9-e5fa-417c-9165-87c05c11cd50.png)
 
 Nexus by Sonatype is a repository manager that organizes, stores and distributes artifacts needed for development. With Nexus, developers can completely control access to, and deployment of, every artifact in an organization from a single location, making it easier to distribute software
 
-##Prerequisite
+## Prerequisite
 
 1- Installing Ansible to the master server , You can see the guide from Here (https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html)
 
 2- Making SSH connection to the client server which nexus will be installed on
 
-##Installation
+## Installation
 
 Just go to the file path and run the following Command :)
 
