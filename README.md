@@ -26,7 +26,7 @@ The last Task to check if Nexus is responding, If u got 200 Ok that means its ru
 
 ![image](https://user-images.githubusercontent.com/122731503/230696035-34341f0d-bce1-44de-b094-7687276a6f52.png)
 
-To access the nexus dashboard, visit http://:8081. You will be able to see the nexus homepage as shown below.
+To access the nexus dashboard, visit http://:localhost:8081. You will be able to see the nexus homepage as shown below.
 
 ![image](https://user-images.githubusercontent.com/122731503/230696126-42644132-433a-4671-988e-ce20178c656b.png)
 
