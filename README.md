@@ -2,7 +2,7 @@
 
 ##Ansible
 
-![Ansible_logo svg](https://user-images.githubusercontent.com/122731503/230690878-6e41e59a-e734-4044-b156-af342c634d0c.png)
+
 Ansible is an open-source, cross-platform tool for resource provisioning automation that DevOps professionals
 
 ##Nexus 
