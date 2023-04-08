@@ -12,9 +12,9 @@ Nexus by Sonatype is a repository manager that organizes, stores and distributes
 
 ## Prerequisite
 
-1- Installing Ansible on the master server , You can see how to install it from the guide Here (https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html)
+1- Installing Ansible on the master server , You can see how to install it from the guide [Click Here] (https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html)
 
-2- Making SSH connection to the client server which nexus will be installed on
+2- Making SSH connection between the master server and the client server which nexus will be installed on
 
 ## Installation
 
