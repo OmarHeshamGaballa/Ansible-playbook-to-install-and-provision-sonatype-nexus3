@@ -20,7 +20,7 @@ Nexus by Sonatype is a repository manager that organizes, stores and distributes
 
 Just go to the file path and run the following Command :)
 
-**ansible-playbook -i inventory project.yml**
+![image](https://user-images.githubusercontent.com/122731503/230696328-2860d039-95e2-4e82-8ddf-d8bcbb828d00.png)
 
 The last Task to check if Nexus is responding, If u got 200 Ok that means its running successfuly :)
 
